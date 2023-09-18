@@ -1,0 +1,50 @@
+/**
+ * Function to convert text to Morse code.
+ *
+ * @param {string} text - The text to be converted to Morse code.
+ * @returns {string} The Morse code representation of the input text.
+ */
+function convertToMorseCode(text) {
+    // Define the Morse code mapping
+    const morseCodeMapping = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+        'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+        'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
+        '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', '.': '.-.-.-', ',': '--..--',
+        '?': '..--..', "'": '.----.', '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...',
+        ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-', '"': '.-..-.',
+        '$': '...-..-', '@': '.--.-.', ' ': '/'
+    };
+
+    // Convert the input text to uppercase
+    const uppercaseText = text.toUpperCase();
+
+    // Initialize the Morse code result
+    let morseCodeResult = '';
+
+    // Iterate over each character in the input text
+    for (let i = 0; i < uppercaseText.length; i++) {
+        const char = uppercaseText[i];
+
+        // Check if the character exists in the Morse code mapping
+        if (morseCodeMapping.hasOwnProperty(char)) {
+            // Append the Morse code representation of the character to the result
+            morseCodeResult += morseCodeMapping[char] + ' ';
+        } else {
+            // Append a question mark if the character is not supported
+            morseCodeResult += '? ';
+        }
+    }
+
+    // Remove trailing whitespace from the result
+    morseCodeResult = morseCodeResult.trim();
+
+    return morseCodeResult;
+}
+
+// Usage Example
+
+const inputText = 'Hello, World!';
+const morseCode = convertToMorseCode(inputText);
+console.log(`The Morse code representation of "${inputText}" is: ${morseCode}`);
